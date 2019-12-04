@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+  <link rel="dns-prefetch" href="//wq.360buyimg.com">
+  <title></title>
+  <script src="./js/rem2.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <!-- <link rel="stylesheet" type="text/css" href="./css/main.css"> -->
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <!-- 动态兼容多设备显示脚本 -->
+  <script>function __uri(url) { return url; }</script>
+  <style type="text/css">
+    .box{
+      padding: 20px;
+
+    }
+    input{
+      outline-style: none ;
+      border: 1px solid #ccc;
+      padding: 10px ;
+    }
+    .xxxToast {
+      position: fixed;
+      display: none;
+      z-index: 10000;
+      min-width: 200px;
+      max-width: 500px;
+      min-height: 40px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      line-height: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+
+<body> 
+  <div class="box bgF">        
+    <input type="text" class="date_get" id="date_get" placeholder="请选择时间">  
+  </div>
+  </div>
+  <!--提示弹框-->
+  <div id="xxxToast" class="xxxToast"> </div>
+  <script src="./js/data.js"></script>
+  <script type="text/javascript">
+    $("#date_get").date({
+      beginYear: 2015,//可不填，默认开始时间为2010
+      endYear: 2088, //可不填，结束年份不会小于当前年份    
+      startTime: 10, //可不填，默认开始时间不能早于9点 
+      endTime: 22, //可不填，默认结束时间不能早于9点    
+      type: 'YYYY-MM-DD',
+      limitTime: 'today', //限制选择时间 today 今天之前的时间不可选 tomorrow 明天之前的不可选
+      location: null, //before 跳转至之前选择的时间，如果为空则跳转至当前时间
+      callback: function (str) {
+        console.log(str);
+        // 赋值
+        if ($("#date_get").is('input')) {
+          $("#date_get").val(str);
+
+          $('#date_get').attr('data-num', str);
+        } else {
+          $(this).text(str);
+        }
+
+      } //回调函数
+    });
+    
+  </script>
+  <!-- <script src="https://www.w3cways.com/demo/vconsole/vconsole.min.js?v=2.2.0"></script> -->
+</body>
+
+</html>
